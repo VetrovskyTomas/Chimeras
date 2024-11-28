@@ -1,5 +1,5 @@
 # Chimeras
-Reference dataset for UCHIME: 10.1264/jsme2.ME14121
+Reference dataset for UCHIME: 10.1264/jsme2.ME14121 - just fungi from unite
 
 ### REFERENCE BASED
 
