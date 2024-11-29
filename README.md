@@ -22,7 +22,9 @@ Reference dataset for UCHIME: 10.1264/jsme2.ME14121 - just fungi from unite
 ### REFERENCE BASED
 
 ITS2_PERMANENT_CLUSTERS_SEEDs.fa https://www.biomed.cas.cz/mbu/lbwrf/seed/archive/ITS2_PERMANENT_CLUSTERS_SEEDs.fa.gz
+
 ITS2_TEST.fa https://www.biomed.cas.cz/mbu/lbwrf/seed/archive/ITS2_TEST.zip
+
 ITS2_TEST_chimeric.zip [chimeric = chimclean.fasta(output) - ITS2_TEST.fa(input)]
 
 `vsearch --uchime_ref ITS2_TEST.fa --db ITS2_PERMANENT_CLUSTERS_SEEDs.fa --nonchimeras chimclean.fasta`
