@@ -2,8 +2,13 @@
 
 ITS
 
+ITS long:
+
 raw ITS2 (gITS7/ITS4)
 https://www.biomed.cas.cz/mbu/lbwrf/seed/archive/ITS_EXAMPLE_DATA.zip
+
+ITS2: ITS2_gITS7_ITS4_joined_68000seq.zip
+
 
 16S
 
