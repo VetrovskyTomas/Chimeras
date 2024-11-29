@@ -26,7 +26,7 @@ ITS2_PERMANENT_CLUSTERS_SEEDs.fa https://www.biomed.cas.cz/mbu/lbwrf/seed/archiv
 
 ITS2_TEST.fa https://www.biomed.cas.cz/mbu/lbwrf/seed/archive/ITS2_TEST.7z
 
-ITS2_TEST_chimeric.7z [ chimeric = chimclean.fasta(output) - ITS2_TEST.fa(input) ]
+ITS2_TEST_chimeric.zip [ chimeric = chimclean.fasta(output) - ITS2_TEST.fa(input) ]
 
 `vsearch --uchime_ref ITS2_TEST.fa --db ITS2_PERMANENT_CLUSTERS_SEEDs.fa --nonchimeras chimclean.fasta`
 
