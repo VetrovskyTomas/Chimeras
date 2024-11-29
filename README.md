@@ -1,6 +1,6 @@
 ### DATASETS
 
-ITS
+**ITS**
 
 ITS full: 16S_27F_1429R_full_90000seq.7z
 
@@ -10,7 +10,7 @@ https://www.biomed.cas.cz/mbu/lbwrf/seed/archive/ITS_EXAMPLE_DATA.zip
 ITS2: ITS2_gITS7_ITS4_joined_68000seq.zip
 
 
-16S
+**16S**
 
 raw 16S short (515F/806R)
 https://www.biomed.cas.cz/mbu/lbwrf/seed/archive/BAC_EXAMPLE_DATA.zip
