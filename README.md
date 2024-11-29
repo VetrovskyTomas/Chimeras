@@ -1,4 +1,17 @@
-# Chimeras
+### DATASETS
+
+ITS
+
+raw ITS2 (gITS7/ITS4)
+https://www.biomed.cas.cz/mbu/lbwrf/seed/archive/ITS_EXAMPLE_DATA.zip
+
+16S
+
+raw 16S short (515F/806R)
+https://www.biomed.cas.cz/mbu/lbwrf/seed/archive/BAC_EXAMPLE_DATA.zip
+
+
+### Chimeras
 Reference dataset for UCHIME: 10.1264/jsme2.ME14121 - just fungi from unite
 
 ### REFERENCE BASED
