@@ -2,7 +2,7 @@
 
 ITS
 
-ITS long:
+ITS full: 16S_27F_1429R_full_90000seq.7z
 
 raw ITS2 (gITS7/ITS4)
 https://www.biomed.cas.cz/mbu/lbwrf/seed/archive/ITS_EXAMPLE_DATA.zip
@@ -15,17 +15,18 @@ ITS2: ITS2_gITS7_ITS4_joined_68000seq.zip
 raw 16S short (515F/806R)
 https://www.biomed.cas.cz/mbu/lbwrf/seed/archive/BAC_EXAMPLE_DATA.zip
 
+16S full: ITS_ ITS9mun_ITS4ngsUn_full_149350seq.7z
 
 ### Chimeras
 Reference dataset for UCHIME: 10.1264/jsme2.ME14121 - just fungi from unite
 
 ### REFERENCE BASED
 
-ITS2_PERMANENT_CLUSTERS_SEEDs.fa https://www.biomed.cas.cz/mbu/lbwrf/seed/archive/ITS2_PERMANENT_CLUSTERS_SEEDs.fa.gz
+ITS2_PERMANENT_CLUSTERS_SEEDs.fa https://www.biomed.cas.cz/mbu/lbwrf/seed/archive/ITS2_PERMANENT_CLUSTERS_SEEDs.7z
 
-ITS2_TEST.fa https://www.biomed.cas.cz/mbu/lbwrf/seed/archive/ITS2_TEST.zip
+ITS2_TEST.fa https://www.biomed.cas.cz/mbu/lbwrf/seed/archive/ITS2_TEST.7z
 
-ITS2_TEST_chimeric.zip [chimeric = chimclean.fasta(output) - ITS2_TEST.fa(input)]
+ITS2_TEST_chimeric.7z [ chimeric = chimclean.fasta(output) - ITS2_TEST.fa(input) ]
 
 `vsearch --uchime_ref ITS2_TEST.fa --db ITS2_PERMANENT_CLUSTERS_SEEDs.fa --nonchimeras chimclean.fasta`
 
