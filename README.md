@@ -16,6 +16,8 @@ Reference dataset for UCHIME: 10.1264/jsme2.ME14121 - just fungi from unite
 
 ### REFERENCE BASED
 
+ITS2_PERMANENT_CLUSTERS_SEEDs.fa https://www.biomed.cas.cz/mbu/lbwrf/seed/archive/ITS2_PERMANENT_CLUSTERS_SEEDs.fa.gz
+
 `vsearch --uchime_ref TEST.fa --db ITS2_PERMANENT_CLUSTERS_SEEDs.fa --nonchimeras chimclean.fasta`
 
 vsearch v2.21.2_linux_x86_64, 5948.9GB RAM, 1152 cores
