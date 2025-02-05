@@ -56,10 +56,10 @@ Simera folder uploaded here was taken from https://github.com/bnichols1979/Simer
   
 ./Simera -i tutorial/example_input.fa -o michal_examples/example_output -n 25 -s 10000 -l 0.00005 -c 10000 -f GTGNCAGCMGCCGCGGTAA -r GGACTACHVGGGTWTCTAAT -x 
 
-========================================
+\========================================
   Simera - Simulates Chimera Formation
   Use option -h for help
-========================================
+\========================================
 Generated 10,000 potential chimeras...
 PCR Round 25...
 Done.
