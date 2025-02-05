@@ -53,3 +53,13 @@ Taking abundance information into account, this corresponds to 347395 (6.5%) chi
 
 Simera folder uploaded here was taken from https://github.com/bnichols1979/Simera?tab=readme-ov-file and Simera.h file was modified to work with modern GCC:
   Tested on WSL1 Debian with gcc (Debian 12.2.0-14) 12.2.0 , GNU Make 4.3 - Built for x86_64-pc-linux-gnu , and GSL (libgsl-dev) (2.7.1+dfsg-5+deb12u1)
+  
+./Simera -i tutorial/example_input.fa -o michal_examples/example_output -n 25 -s 10000 -l 0.00005 -c 10000 -f GTGNCAGCMGCCGCGGTAA -r GGACTACHVGGGTWTCTAAT -x 
+
+========================================
+  Simera - Simulates Chimera Formation
+  Use option -h for help
+========================================
+Generated 10,000 potential chimeras...
+PCR Round 25...
+Done.
