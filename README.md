@@ -51,6 +51,8 @@ Found 347395 (6.5%) chimeras, 4935564 (92.6%) non-chimeras, and 45776 (0.9%) bor
 
 Taking abundance information into account, this corresponds to 347395 (6.5%) chimeras, 4935564 (92.6%) non-chimeras, and 45776 (0.9%) borderline sequences in 5328735 total sequences.
 
+## Simera
+
 Simera folder uploaded here was taken from https://github.com/bnichols1979/Simera?tab=readme-ov-file and Simera.h file was modified to work with modern GCC:
   Tested on WSL1 Debian with gcc (Debian 12.2.0-14) 12.2.0 , GNU Make 4.3 - Built for x86_64-pc-linux-gnu , and GSL (libgsl-dev) (2.7.1+dfsg-5+deb12u1)
   
