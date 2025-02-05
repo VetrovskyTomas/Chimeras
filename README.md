@@ -71,3 +71,31 @@ Generated 10,000 potential chimeras...
 PCR Round 25...
 
 Done.
+
+--------------------
+
+cat summary.txt
+
+\# Sequences = 7031
+
+\# Chimeras = 6050
+
+Max length = 491
+
+Total abundance = 38444725
+
+Chimera abundance = 4136442
+
+--------------------
+
+cat samp_summary.txt
+
+\# Sequences = 1271
+
+\# Chimeras = 490
+
+Max length = 301
+
+Total abundance = 10000
+
+Chimera abundance = 1064
