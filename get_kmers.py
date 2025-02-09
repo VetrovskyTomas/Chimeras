@@ -1,8 +1,10 @@
 # sorted inputs ?? will it help?? # nestarea se o "unidentified"
 from itertools import chain
 from collections import deque
-def get_kmers(ref_seqs,k_size,kmer_count_threshold,name_patter = "(f__).+?(;)"): # dont need par_of_fasta_id
-    
+def get_kmers(ref_seqs,k_size=50,kmer_count_threshold=10,name_patter = "(f__).+?(;)"): # dont need par_of_fasta_id
+    """
+    Takes list of biopython reads from UNITE database and returns dictionary of kmers present in each family
+    """
     ref_seqs = [(re.search(name_patter,i.id).group().strip(";"),i.seq) for i in ref_seqs] # makes list of tuple(family-name , sequence) from list of SeqRecords
     names = set([i[0] for i in ref_seqs])
     print(f"{len(ref_seqs)} of sequences, {len(names)} of unique taxa")
