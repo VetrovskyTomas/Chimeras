@@ -99,3 +99,59 @@ Max length = 301
 Total abundance = 10000
 
 Chimera abundance = 1064
+
+
+## Detection Tools
+
+Pintail (WigeoN) (Ashelford et al., 2005) (WigeoN)
+	Detects all 16S anomalies, most of them are chimeras, work only on 16S
+	Complicated 
+Runs Global Allignment against some database and detect general anomalies
+	– reimplemented as WigeoN by Haas 2011
+ 
+Bellerophon (Huber, Faulkner and Hugenholtz, 2004)           (DeSantis et al., 2006)
+	Reimplemented by Haas 2011
+Checks divergence between the sequence and potential perents and if it meets minimal threshold it is labeled as chimera
+
+KmerGenus (Haas et al., 2011)
+computed a catalog of all overlaping 50-mers unique to each genus withina reference 16S sequence set. 
+Make set of taxon specific Kmers.
+Those matching multiple taxa are chimeras
+
+Chimera slayer (Haas et al., 2011)
+	“is sensitive to chimeras between closely related 16S genes”
+	Tested on 454 and Sanger
+Procedure:
+30% of the length from each end) were searched against database of reference chimera-free 16S sequences to identify potential parents of a chimera 
+candidate parents of a chimera were selected in NAST 
+Scoring higher in alignment with potential parents than any other real reference sequence – it is a chimera. It uses function similar to CHECK_CHIMERA in (Komatsoulis and Waterman, 1997) – also complicated
+Three-way alignment 
+	CS recognized >87% of chimeras with a minimum of 4% chimera-pair divergence
+Creation of Artificial Chimeras: 
+Join two sequences with a random break point, each being at least 50bp long
+Parent sequence divergence must be at least 10%
+
+Chimera-Checker (Nilsson et al., 2010)
+	Only ITS, reference based
+	Useful only on whole ITS region (ITS1 + ITS2 ± 100bp)
+Extracts ITS1 and ITS2 using HMMER
+Blasts against INSD
+If ITS1 belongs to one taxa and ITS2 to other -> chimera
+
+Perseus (Quince et al., 2011)
+	De novo
+	Designed for 454, but might work on other sequences (says Edgar)
+	Also a Noise-removing tool
+Assumes lower frequency of chimeras compared to their parents due to less PCR cycles and each parent will be present with a frequency at least of equal to chimeras
+Pairwise alignment of all sequences and sequences with equal or greater abundance
+
+UCHIME (Edgar et al., 2011)
+Reference based:
+Sequence is divided into 4 chunks and each chunk is searched in a reference database
+Two (or more?) candidate parents are identified
+Global-X alignment
+If segments extracted from parents have higher identity to the sequence, than to them selves -> chimera
+De novo:
+	Database is build on the fly and is sorted by decreasing abundance 
+	Candidate Parents must have abundance of at least 2x abundant than the chimera
+Alignments:
