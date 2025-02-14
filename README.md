@@ -154,4 +154,11 @@ If segments extracted from parents have higher identity to the sequence, than to
 De novo:
 	Database is build on the fly and is sorted by decreasing abundance 
 	Candidate Parents must have abundance of at least 2x abundant than the chimera
-Alignments:
+
+DECIPHER 
+makes 30-mers from a sequence starting every 5 nucleotides and then matches a query sequence to a set of these Kmers.
+There are sets for fungal groups ...
+
+CATCh
+Combines DECIPHER, ChimeraSlayer and UCHIME
+
