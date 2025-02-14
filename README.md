@@ -157,7 +157,7 @@ De novo:
 
 DECIPHER 
 makes 30-mers from a sequence starting every 5 nucleotides and then matches a query sequence to a set of these Kmers.
-There are sets for fungal groups ...
+There are sets for fungal groups and evaluetes whether the query sequence belong to a predefined group or is a chimera.
 
 CATCh
 Combines DECIPHER, ChimeraSlayer and UCHIME
