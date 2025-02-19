@@ -162,3 +162,5 @@ There are sets for fungal groups and evaluetes whether the query sequence belong
 CATCh
 Combines DECIPHER, ChimeraSlayer and UCHIME
 
+
+## κmera
