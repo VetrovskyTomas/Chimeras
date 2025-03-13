@@ -1,0 +1,7 @@
+1) get fasta with v4 regions with "hyperex"
+
+2) put abundances at the end of the read names with put_abundance_lab_for_simera (it also creates fasta with one-line sequences) - the label is "_{num}" so "_1" 
+
+3) run simera with this fasta (the result will contain abundances at the end of each read name)
+
+4) Vsearch uchime need abundances in different format so run put_abundance_lab_for_vsearch on the fasta from simera - on the all_seqs.fa

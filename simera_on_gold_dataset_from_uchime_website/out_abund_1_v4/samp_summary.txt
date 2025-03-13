@@ -1,0 +1,5 @@
+# Sequences = 3587
+# Chimeras = 806
+Max length = 296
+Total abundance = 10000
+Chimera abundance = 1128

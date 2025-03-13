@@ -1,0 +1,8 @@
+Version: Simera_v2.1
+RNG seed: 1741873761
+Input file: v4_hyperex_out_lab_1.fa
+Simulated rounds: 25
+Lambda: 5.000000e-05
+Sampled reads: 10000
+Forward primer: GTGNCAGCMGCCGCGGTAA
+Reverse primer: GGACTACHVGGGTWTCTAAT
