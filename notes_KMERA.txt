@@ -1,0 +1,33 @@
+  __   ___     __    __      _____   ______       ____    
+ () ) / __)    \ \  / /     / ___/  (   __ \     (    )   
+ ( (_/ /       () \/ ()    ( (__     ) (__) )    / /\ \   
+ ()   (        / _  _ \     ) __)   (    __/    ( (__) )  
+ () /\ \      / / \/ \ \   ( (       ) \ \  _    )    (   
+ ( (  \ \    /_/      \_\   \ \___  ( ( \ \_))  /  /\  \  
+ ()_)  \_\  (/          \)   \____\  )_) \__/  /__(  )__\ 
+                                                          
+
+1) Use Hyperex to get positions between primers
+  - for ITS use untrimmed uchime or unite seqs
+  - for 16S V regions use gold dataset or silva bacteria
+  
+  -TODO make such data for all primers (gITS7/ITS4 ...) (V4,V3V4 ...)
+  -TODO repair hyperex to not throw errors: https://github.com/Ebedthan/hyperex/issues/4
+  
+  
+2) Use Simera to simulate chimeras for all sequences from hyperex
+  - repair Simera.h file - done
+  -TODO use put_abundance_lab_for_simera.py to a fasta file so Simera can take it
+  -TODO use put_abundance_lab_for_vsearch.py to check chimeras from simera with vseach
+  
+
+3) use set of KMERA scripts to make model for chimera detection
+  - use get_kmers_para_pickles_abund.py to save pickles of all kmers per genus per K_size -> each pickle is dict of kmers with kmer sequence and median of its position in all sequences of that genus and info about kmer abundance
+  - make Kmers of trimmed UNITE seqs? or HYPEREX output?? see what works
+  
+  - take a testing fasta (SIMERA output) and create features: best 10 or so matching genera (more genus) per that one read and write down average of possitions of matched kmers, diference between median of matched kmers and median metadata included in those kmer pickles. ALSO number of kmer matched for that genus and length of the sequence.
+  - among ML features should also be info about primers used - should I make model for each primer set?
+  
+  - make lot of model minimizing False positive or False negative
+  
+  - make clustering and add it as feature for ml? - compresses abundance information OR I can add abundance info OR use UCHIME as a feature??
