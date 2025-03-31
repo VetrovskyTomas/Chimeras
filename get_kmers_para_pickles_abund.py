@@ -8,6 +8,9 @@ import gzip
 from Bio import SeqIO
 import os
 from statistics import median
+import sys
+import numpy as np
+
 def extract_kmers(seq, k_size): # this is somehow faster than this: [seq[r:r+k_size] for r in range(len(seq)-k_size+1)]
     """
     Extracts k-mers (substrings of length k) from a sequence with their starting indices.
@@ -45,10 +48,17 @@ def process_chunk(para_input):
     all_kmers_index_dic = {k:[] for k in all_kmers_set}
     for kmer, i in extended_list_of_all_kmers_with_index:
         all_kmers_index_dic[kmer].append(i)
-    all_kmers_index_dic = {kmer: (median(indices),len(indices)) for kmer, indices in all_kmers_index_dic.items()}
-    with gzip.open(f'{out_dir}{k}.pickle.gzip', 'wb') as f:
-        pickle.dump({k:all_kmers_index_dic}, f, protocol=pickle.HIGHEST_PROTOCOL)
+    #all_kmers_index_dic = {kmer: (median(indices),len(indices)) for kmer, indices in all_kmers_index_dic.items()}
     #print({k:all_kmers_index_dic})
+    # Convert all_kmers_index_dic to a memory-efficient structure
+    kmer_array = np.array(list(all_kmers_index_dic.keys()), dtype=f'U{k_size}')  # Array of k-mers
+    index_array = np.array([np.array(indices, dtype=np.uint16) for indices in all_kmers_index_dic.values()], dtype=object)  # Array of lists of indices
+
+    # Save the numpy arrays
+    np.savez_compressed(f'{out_dir}{k}.npz', kmer_array=kmer_array, index_array=index_array)
+
+    #with gzip.open(f'{out_dir}{k}.pickle.gzip', 'wb') as f:
+    #    pickle.dump({k:all_kmers_index_dic}, f, protocol=pickle.HIGHEST_PROTOCOL)
     
 def get_kmers_para_pickle(ref_seqs,k_size=50,threads = 1,name_patter=None,out_dir=None): # dont need par_of_fasta_id
     """
