@@ -37,7 +37,7 @@ def extract_kmers(seq, k_size): # this is somehow faster than this: [seq[r:r+k_s
 
 
 def process_chunk(para_input):
-    k, v, k_size, out_dir = para_input
+    k, v, k_size, out_dir,compress_or_return = para_input
     #print(len(v))
     #if len(v) < 2: return
     extended_list_of_all_kmers_with_index = []
@@ -55,24 +55,27 @@ def process_chunk(para_input):
     index_array = np.array([np.array(indices, dtype=np.uint16) for indices in all_kmers_index_dic.values()], dtype=object)  # Array of lists of indices
 
     # Save the numpy arrays
-    np.savez_compressed(f'{out_dir}{k}.npz', kmer_array=kmer_array, index_array=index_array)
-
+    if compress_or_return == "c":
+        np.savez_compressed(f'{out_dir}{k}.npz', kmer_array=kmer_array, index_array=index_array)
+    if compress_or_return == "r":
+        return kmer_array, index_array
     #with gzip.open(f'{out_dir}{k}.pickle.gzip', 'wb') as f:
     #    pickle.dump({k:all_kmers_index_dic}, f, protocol=pickle.HIGHEST_PROTOCOL)
     
-def get_kmers_para_pickle(ref_seqs,k_size=50,threads = 1,name_patter=None,out_dir=None): # dont need par_of_fasta_id
+def get_kmers_para_pickle(ref_seqs,k_size=50,threads = 1,name_patter=None,out_dir=None,compress_or_return = "c"): # dont need par_of_fasta_id
     """
     Takes list of biopython reads from UNITE database and saves kmers present in a taxonomic group [genus, family, class, order] in .../all{k_mer_size}.pickle.gzip
+    compress_or_return = "c" for compressing and saving each file separetly, "r" for returning the kmers as a dictionary and saving them at once
     """
     start = time.time()
     ref_seqs = [i for i in SeqIO.parse(ref_seqs,"fasta")]
-
+    pat = None
     if not name_patter: print("No name pattern!") ; return
-    elif "g" in name_patter.lower(): pat = "g"
-    elif "f" in name_patter.lower(): pat = "f"
-    elif "c" in name_patter.lower(): pat = "c"
-    elif "o" in name_patter.lower(): pat = "o"
-    name_patter = f"({pat}__).+?(;)"
+    elif "genus" in name_patter.lower(): pat = "g"
+    elif "family" in name_patter.lower(): pat = "f"
+    elif "class" in name_patter.lower(): pat = "c"
+    elif "order" in name_patter.lower(): pat = "o"
+    if pat: name_patter = f"({pat}__).+?(;)"
     
     if not out_dir : print("No output directory!") ; return
     if out_dir[-1] != "/": out_dir = out_dir+"/"
@@ -90,11 +93,21 @@ def get_kmers_para_pickle(ref_seqs,k_size=50,threads = 1,name_patter=None,out_di
             dic_seqs.pop(k)
             break
     lenka = len(names)
-    with Pool(threads) as pool:
-        para_input = [(k,v,k_size,out_dir) for k,v in dic_seqs.items()]
-        for i, result in enumerate(pool.imap_unordered(process_chunk, para_input)):
-            if i % 10 == 0: print(f"{i}/{lenka}      ", end="\r")
-            #if i ==3:break
-    
+    if compress_or_return == "c":
+        with Pool(threads) as pool:
+            para_input = [(k,v,k_size,out_dir,"c") for k,v in dic_seqs.items()]
+            for i, result in enumerate(pool.imap_unordered(process_chunk, para_input)):
+                if i % 10 == 0: print(f"{i}/{lenka}      ", end="\r")
+                #if i ==3:break
+    if compress_or_return == "r":
+            with Pool(threads) as pool:
+                para_input = [(k,v,k_size,out_dir,"r") for k,v in dic_seqs.items()]
+                results = []
+                for i, result in enumerate(pool.imap_unordered(process_chunk, para_input)):
+                    if i % 500 == 0: print(f"{i}/{lenka}      ", end="\r")
+                    results.append(result)
+                all_kmers_index_dic = {k: v for k, v in zip(names, results)}
+            with open(f"{out_dir}all_kmers_index_dic.pickle", 'wb') as f:
+                pickle.dump(all_kmers_index_dic, f, protocol=pickle.HIGHEST_PROTOCOL)
     print(f"Execution Time: {time.time() - start}")
 
