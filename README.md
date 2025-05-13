@@ -163,4 +163,10 @@ CATCh
 Combines DECIPHER, ChimeraSlayer and UCHIME
 
 
+
+## Vsearch --chimeras_denovo - description of new experimental algorithm: 
+
+https://github.com/torognes/vsearch/issues/118#issuecomment-1443978907
+
+
 ## κmera
